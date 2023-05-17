@@ -1,111 +1,48 @@
 {
     "_version": "1.12.0",
     "sap.app": {
-        "_version": "1.1.0",
-        "id": "Bookipo",
-        "type": "application",
-        "i18n": "i18n/i18n.properties",
-        "applicationVersion": {
-            "version": "1.0.0"
-        },
-        "title": "{{appTitle}}",
-        "description": "{{appDescription}}",
-        "sourceTemplate": {
-            "id": "ui5template.basicSAPUI5ApplicationProject",
-            "version": "1.40.12"
-        }
-    },
-    "sap.ui": {
-        "_version": "1.3.0",
-        "technology": "UI5",
-        "icons": {
-            "icon": "",
-            "favIcon": "",
-            "phone": "",
-            "phone@2": "",
-            "tablet": "",
-            "tablet@2": ""
-        },
-        "deviceTypes": {
-            "desktop": true,
-            "tablet": true,
-            "phone": true
-        },
-        "supportedThemes": [
-            "sap_hcb",
-            "sap_belize"
-        ]
-    },
-    "sap.ui5": {
-        "_version": "1.2.0",
-        "rootView": {
-            "viewName": "Bookipo.view.App",
-            "type": "XML",
-            "async": true,
-            "id": "app"
-        },
-        "dependencies": {
-            "minUI5Version": "1.60.1",
-            "libs": {
-                "sap.ui.core": {},
-                "sap.m": {}
-            }
-        },
-        "models": {
-            "i18n": {
-                "type": "sap.ui.model.resource.ResourceModel",
-                "settings": {
-                    "bundleName": "Bookipo.i18n.i18n"
-                }
-            },
-            "": {
-                "type": "sap.ui.model.json.JSONModel",
-                "uri": "model/Books.json"
-            }
-        },
-        "resources": {
-            "css": [
-                {
-                    "uri": "css/style.css"
-                }
-            ]
-        },
-        "routing": {
-            "config": {
-                "routerClass": "sap.m.routing.Router",
-                "viewType": "XML",
-                "viewPath": "Bookipo.view",
-                "controlId": "rootControl",
-                "controlAggregation": "pages",
-                "transition": "slide"
-            },
-            "routes": [
-                {
-                    "pattern": "",
-                    "name": "appHome",
-                    "target": "page1"
-                }
-            ],
-            "targets": {
-                "page1": {
-                    "viewName": "App",
-                    "viewLevel": 1
-                }
-            }
-        }
-    }
-}
-{
-    "sap.app": {
+      "_version": "1.3.0",
       "id": "sap.ui.demo",
       "type": "application",
       "i18n": "i18n/i18n.properties",
-      "title": "{{pageTitle}}"
+      "applicationVersion": {
+        "version": "1.0.0"
+      },
+      "title": "{{appTitle}}",
+      "description": "{{appDescription}}",
+      "sourceTemplate": {
+        "id": "ui5template.basicSAPUI5ApplicationProject",
+        "version": "1.40.12"
+      }
+    },
+    "sap.ui": {
+      "_version": "1.3.0",
+      "technology": "UI5",
+      "deviceTypes": {
+        "desktop": true,
+        "tablet": true,
+        "phone": true
+      },
+      "supportedThemes": [
+        "sap_hcb",
+        "sap_belize"
+      ]
     },
     "sap.ui5": {
+      "_version": "1.2.0",
       "rootView": {
         "viewName": "sap.ui.demo.view.App",
-        "type": "XML"
+        "type": "XML",
+        "async": true,
+        "id": "app"
+      },
+      "dependencies": {
+        "minUI5Version": "1.30.0",
+        "libs": {
+          "sap.ui.core": {},
+          "sap.m": {},
+          "sap.ui.layout": {}
+        }
       },
       "models": {
         "i18n": {
@@ -113,21 +50,40 @@
           "settings": {
             "bundleName": "sap.ui.demo.i18n.i18n"
           }
-        },
-        "": {
-          "type": "sap.ui.model.json.JSONModel",
-          "uri": "model/Books.json"
-        },
-        "user": {
-          "type": "sap.ui.model.xml.XMLModel",
-          "uri": "model/Users.xml"
         }
       },
       "routing": {
-        // Define your routing configuration here
+        "config": {
+          "routerClass": "sap.m.routing.Router",
+          "viewType": "XML",
+          "viewPath": "sap.ui.demo.view",
+          "controlId": "app",
+          "controlAggregation": "pages",
+          "transition": "slide"
+        },
+        "routes": [
+          {
+            "pattern": "",
+            "name": "app",
+            "target": "home"
+          },
+          {
+            "pattern": "detail/{bookPath}",
+            "name": "detail",
+            "target": "detail"
+          }
+        ],
+        "targets": {
+          "home": {
+            "viewName": "App",
+            "viewLevel": 1
+          },
+          "detail": {
+            "viewName": "Detail",
+            "viewLevel": 2
+          }
+        }
       }
     }
-}
-
-
+  }
   
