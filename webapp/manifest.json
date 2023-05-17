@@ -1,0 +1,16 @@
+"sap.ui5": {
+    //...
+    "models": {
+        "i18n": {
+            "type": "sap.ui.model.resource.ResourceModel",
+            "settings": {
+                "bundleName": "Bookipo.i18n.i18n"
+            }
+        },
+        "": {
+            "type": "sap.ui.model.json.JSONModel",
+            "uri": "model/Books.json"
+        }
+    },
+    //...
+}
