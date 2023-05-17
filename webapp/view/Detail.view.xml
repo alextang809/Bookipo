@@ -1,0 +1,11 @@
+<mvc:View controllerName="sap.ui.demo.controller.Detail" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
+  <Page title="{Book>/title}">
+    <content>
+      <ObjectHeader title="{Book>/title}" number="{Book>/author}">
+        <attributes>
+          <ObjectAttribute text="{Book>/genre}" />
+        </attributes>
+      </ObjectHeader>
+    </content>
+  </Page>
+</mvc:View>

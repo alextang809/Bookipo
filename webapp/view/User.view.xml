@@ -1,0 +1,9 @@
+<mvc:View controllerName="sap.ui.demo.controller.User" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
+  <Page title="{i18n>user}">
+    <content>
+      <List items="{user>/}">
+        <StandardListItem title="{user>username}" description="{user>fullName}, {user>email}" />
+      </List>
+    </content>
+  </Page>
+</mvc:View>
