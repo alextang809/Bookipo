@@ -75,10 +75,117 @@
 //     });
 // });
 
+// sap.ui.define([
+//     "sap/ui/core/mvc/Controller",
+//     "sap/ui/model/json/JSONModel"
+//   ], function (Controller, JSONModel) {
+//     "use strict";
+  
+//     return Controller.extend("sap.ui.demo.controller.App", {
+//       onInit: function () {
+//         // Set initial language
+//         sap.ui.getCore().getConfiguration().setLanguage("en");
+  
+//         // Load JSON data
+//         var oModel = new JSONModel("model/Books.json");
+//         this.getView().setModel(oModel);
+  
+//         // Load XML data
+//         var oUserModel = new sap.ui.model.xml.XMLModel();
+//         oUserModel.loadData("model/Users.xml");
+//         this.getView().setModel(oUserModel, "user");
+//       },
+
+//       onAdd: function() {
+//   // Get input from user
+//   var oNewBook = {
+//     "id": "3",
+//     "title": "New Book",
+//     "author": "New Author",
+//     "genre": "New Genre"
+//   };
+  
+//   // Get data from localStorage
+//   var oData = JSON.parse(localStorage.getItem("Books"));
+
+//   // Add new book to data
+//   oData.Books.push(oNewBook);
+
+//   // Save data back to localStorage
+//   localStorage.setItem("Books", JSON.stringify(oData));
+
+//   // Update the model
+//   this.getView().getModel().setData(oData);
+//   this.byId("bookList").getBinding("items").refresh();
+// },
+
+  
+//       onSwitchLanguage: function () {
+//         var sCurrentLanguage = sap.ui.getCore().getConfiguration().getLanguage();
+//         var sNewLanguage = sCurrentLanguage === "en" ? "de" : "en";
+//         sap.ui.getCore().getConfiguration().setLanguage(sNewLanguage);
+//       },
+  
+//       onItemPress: function (oEvent) {
+//         // Navigate to detail page
+//         var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+//         var oItem = oEvent.getSource();
+//         var sPath = oItem.getBindingContext().getPath();
+//         oRouter.navTo("detail", {
+//           bookPath: window.encodeURIComponent(sPath)
+//         });
+//       }
+
+//       onDelete: function(oEvent) {
+//         var oItem = oEvent.getSource();
+//         var oList = this.byId("bookList");
+//         var sPath = oItem.getBindingContext().getPath();
+      
+//         // get data
+//         var oData = this.getView().getModel().getData();
+      
+//         // get the item index
+//         var iIndex = parseInt(sPath.substring(sPath.lastIndexOf("/") + 1));
+      
+//         // remove the item
+//         oData.Books.splice(iIndex, 1);
+      
+//         // update the model
+//         this.getView().getModel().setData(oData);
+//         oList.getBinding("items").refresh();
+//       },
+      
+//       onAdd: function() {
+//         // Just an example of adding a new book, you'll need a form in your view for user input
+//         var oData = this.getView().getModel().getData();
+//         var oNewBook = {
+//           "id": "3",
+//           "title": "New Book",
+//           "author": "New Author",
+//           "genre": "New Genre"
+//         };
+//         oData.Books.push(oNewBook);
+//         this.getView().getModel().setData(oData);
+//         this.byId("bookList").getBinding("items").refresh();
+//       },
+      
+//       onUpdate: function() {
+//         // Just an example of updating an existing book, you'll need a form in your view for user input
+//         var oData = this.getView().getModel().getData();
+//         oData.Books[0].title = "Updated Book";
+//         this.getView().getModel().setData(oData);
+//         this.byId("bookList").getBinding("items").refresh();
+//       }
+      
+//     });
+//   });
+  
+
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "sap/ui/model/json/JSONModel"
-  ], function (Controller, JSONModel) {
+    "sap/ui/model/json/JSONModel",
+    "sap/ui/model/xml/XMLModel"
+  ], function (Controller, JSONModel, XMLModel) {
     "use strict";
   
     return Controller.extend("sap.ui.demo.controller.App", {
@@ -91,7 +198,7 @@ sap.ui.define([
         this.getView().setModel(oModel);
   
         // Load XML data
-        var oUserModel = new sap.ui.model.xml.XMLModel();
+        var oUserModel = new XMLModel();
         oUserModel.loadData("model/Users.xml");
         this.getView().setModel(oUserModel, "user");
       },
@@ -110,27 +217,27 @@ sap.ui.define([
         oRouter.navTo("detail", {
           bookPath: window.encodeURIComponent(sPath)
         });
-      }
-
+      },
+  
       onDelete: function(oEvent) {
         var oItem = oEvent.getSource();
         var oList = this.byId("bookList");
         var sPath = oItem.getBindingContext().getPath();
-      
+  
         // get data
         var oData = this.getView().getModel().getData();
-      
+  
         // get the item index
         var iIndex = parseInt(sPath.substring(sPath.lastIndexOf("/") + 1));
-      
+  
         // remove the item
         oData.Books.splice(iIndex, 1);
-      
+  
         // update the model
         this.getView().getModel().setData(oData);
         oList.getBinding("items").refresh();
       },
-      
+  
       onAdd: function() {
         // Just an example of adding a new book, you'll need a form in your view for user input
         var oData = this.getView().getModel().getData();
@@ -144,7 +251,7 @@ sap.ui.define([
         this.getView().getModel().setData(oData);
         this.byId("bookList").getBinding("items").refresh();
       },
-      
+  
       onUpdate: function() {
         // Just an example of updating an existing book, you'll need a form in your view for user input
         var oData = this.getView().getModel().getData();
@@ -152,7 +259,6 @@ sap.ui.define([
         this.getView().getModel().setData(oData);
         this.byId("bookList").getBinding("items").refresh();
       }
-      
     });
   });
   
