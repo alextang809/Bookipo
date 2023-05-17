@@ -1,4 +1,4 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="yourNamespace.controller.App">
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="Bookipo.controller.App">
     <Table id="bookTable" items="{path: '/'}">
         <columns>
             <Column>
@@ -21,4 +21,5 @@
             </ColumnListItem>
         </items>
     </Table>
+    <Button text="Add Book" press="onAddBook" />
 </mvc:View>
