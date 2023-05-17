@@ -1,0 +1,19 @@
+{
+    "name": "Bookipo",
+    "version": "1.0.0",
+    "description": "A simple SAPUI5 application to manage a list of books",
+    "main": "webapp/index.html",
+    "scripts": {
+      "start": "ui5 serve -o webapp/index.html"
+    },
+    "dependencies": {
+      "@sap/ui5-cli": "^2.9.1"
+    },
+    "devDependencies": {},
+    "ui5": {
+      "dependencies": [
+        "@sap/ui5-fesv5"
+      ]
+    }
+  }
+  
