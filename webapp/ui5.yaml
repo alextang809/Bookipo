@@ -1,0 +1,20 @@
+---
+specVersion: '2.6'
+metadata:
+  name: sap.ui.demo
+type: application
+framework:
+  name: SAPUI5
+  version: 1.76.0
+  libraries:
+    - name: sap.ui.core
+    - name: sap.m
+    - name: sap.ui.layout
+server:
+  settings:
+    httpPort: 8080
+  customMiddleware:
+    - name: ui5-middleware-simpleproxy
+      afterMiddleware: compression
+      configuration:
+        baseUri: "https://services.odata.org"
